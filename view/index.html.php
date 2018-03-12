@@ -9,6 +9,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php';
 
 
 <!--Олег 1-->
+<!--Олег 2-->
 <table class="tftable" border="1">
     <tr>
         <th colspan="2">SEO</th>
