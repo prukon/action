@@ -8,7 +8,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php';
 <h3>Тестовое сообщение</h3>
 
 
-<!--Олег 155-->
+<!--Олег 15532131-->
 
 
 
@@ -16,7 +16,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php';
 
 <table class="tftable" border="1">
     <tr>
-        <th colspan="2">SEO</th>
+        <th colspan="2">SEO1</th>
     </tr>
     <tr>
         <td><a href="/action/view/category1.html.php">Категории без title</a></td>
