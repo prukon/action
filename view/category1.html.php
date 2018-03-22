@@ -3,7 +3,7 @@ $pagetitle = "Категории на сайте";
 include_once $_SERVER['DOCUMENT_ROOT'] . '/action/includes/head.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php'; ?>
 <h2><?php echo $pagetitle ?></h2>
-<b>Всего: <?php echo $countcategorytitle ?></b>
+<b>Всего: <?php echo $countnotactive ?></b>
 
 <?php foreach ($categorytitle as $row): ?>
     <blockquote>
@@ -13,6 +13,6 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php'; ?>
     </blockquote>
 <?php endforeach; ?>
 <br>
-<a href="/action">Назад123</a>
+<a href="/action">Наза1д2</a>
 </body>
 </html>
