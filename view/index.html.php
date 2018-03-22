@@ -41,7 +41,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php';
         <th colspan="2">Контент</th>
     </tr>
     <tr>
-        <td><a href="/action/view/notactive.html.php">Активные товары </a></td>
+        <td><a href="/action/view/active.html.php">Активные товары </a></td>
         <td><?php echo colorcount2($countallgoods) ?></td>
     </tr>
     <tr>

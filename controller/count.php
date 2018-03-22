@@ -320,16 +320,34 @@ while ($row = $result->fetch()) {
     ];
 }
 //Расчет всех товаров на сайте
-$sql = 'SELECT `product_id`
-FROM `oc_product`
-WHERE oc_product.status= 1';
+$sql = 'SELECT sku as artukul, price, oc_manufacturer.name as brand, oc_product_description.name as h1, oc_product_description.name as title, oc_product_description.description as description, oc_category_description.name AS category
+FROM oc_product
+LEFT JOIN oc_manufacturer ON oc_manufacturer.manufacturer_id = oc_product.manufacturer_id
+LEFT JOIN oc_product_description ON oc_product_description.product_id = oc_product.product_id
+LEFT JOIN oc_product_to_category ON oc_product.product_id = oc_product_to_category.product_id
+LEFT JOIN oc_category_description ON oc_category_description.category_id = oc_product_to_category.category_id
+WHERE oc_product.status = 1';
 
 $result = $pdo->query($sql);
 while ($row = $result->fetch()) {
     $allgoods[] = [
-        "product_id" => $row['product_id']
+        "artukul" => $row['artukul']
+        , "price" => $row['price']
+        , "brand" => $row['brand']
+        , "h1" => $row['h1']
+        , "title" => $row['title']
+        , "description" => $row['description']
+        , "category" => $row['category']
     ];
 }
+
+
+
+
+
+
+
+
 $countcategorytitle = count($categorytitle);
 $countcategorydescription = count($categorydescription);
 $countgoodstitle = count($goodstitle);
