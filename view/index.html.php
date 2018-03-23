@@ -5,6 +5,12 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php';
 ?>
 
 <!--<h2>--><?php //echo $pagetitle ?><!--</h2>-->
+<h3>Тестовое сообщение</h3>
+
+
+1
+2
+
 
 
 
