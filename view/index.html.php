@@ -38,10 +38,28 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php';
 <br>
 <table class="tftable" border="1">
     <tr>
-        <th colspan="2">Контент</th>
+        <th >Товары</th>
+        <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+        <th >
+
+
+
+            <label><input type="radio" name="image" value="hide" <?= ($check[0]['id'] == 0) ? 'checked' : '' ?>>
+                 Только с фото
+            </label>
+            <label>
+                <input type="radio" name="image" value="show" <?= ($check[0]['id'] == 1) ? 'checked' : '' ?>>
+                Без фото
+            </label>
+
+            <form  class ="change-images" action="" method="post">
+                <input type="submit" name="deletedoubles" value="Применить"/>
+            </form>
+        </form>
+        </th>
     </tr>
     <tr>
-        <td><a href="/action/view/active.html.php">Активные товары </a></td>
+        <td> <a href="/action/view/active.html.php">Активные товары </a></td>
         <td><?php echo colorcount2($countallgoods) ?></td>
     </tr>
     <tr>
@@ -49,23 +67,30 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php';
         <td><?php echo colorcount2($countnotactive) ?></td>
     </tr>
     <tr>
-        <td><a href="/action/view/notimages.html.php">Товары без фото </a></td>
-        <td><?php echo colorcount($countnotimages) ?></td>
-    </tr>
-    <tr>
         <td><a href="/action/view/haveimages.html.php">Товары с фото</a></td>
         <td><?php echo colorcount2($counthaveimages) ?></td>
+    </tr>
+    <tr>
+        <td><a href="/action/view/notimages.html.php">Товары без фото </a></td>
+        <td><?php echo colorcount($countnotimages) ?></td>
     </tr>
     <tr>
         <td><a href="/action/view/option.html.php">Товары с несколькими опциями</a></td>
         <td><?php echo colorcount($countoptions) ?></td>
     </tr>
+</table>
+
+<br>
+<table class="tftable" border="1">
     <tr>
+        <th colspan="2">Категории</th>
+    </tr>
+       <tr>
         <td><a href="/action/view/category.html.php">Категории на сайте</a></td>
         <td><?php echo colorcount2($countcategory) ?>
             <form action="" method="post" class="countcategory">
-            <input type="submit" name="countcategory" value="Рассчитать" >
-</form>
+                <input type="submit" name="countcategory" value="Рассчитать" >
+            </form>
         </td>
     </tr>
     <tr>
@@ -73,28 +98,22 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php';
         <td><?php echo colorcount($councategorydoubleoption) ?></td>
     </tr>
 </table>
+<br>
 <h2>Управление отображением</h2>
-<form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+
     <table class="tftable" border="1">
         <tr>
             <th colspan="2">Товары без фото</th>
         </tr>
         <tr>
-            <td><label>
-                    <input type="radio" name="image" value="show" <?= ($check[0]['id'] == 1) ? 'checked' : '' ?>>
-                    Да
-                </label></td>
-            <td><label><input type="radio" name="image" value="hide" <?= ($check[0]['id'] == 0) ? 'checked' : '' ?>>
-                    Нет
-                </label></td>
+            <td></td>
+            <td></td>
         </tr>
     </table>
     <br>
     <input type="submit" value="Применить"/>
-</form>
+
 <h3>Удаление вторичных опций у товаров</h3>
-<form action="" method="post">
-    <input type="submit" name="deletedoubles" value="Удалить"/>
-    </form>
+
 </body>
 </html>
