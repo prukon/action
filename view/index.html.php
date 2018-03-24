@@ -5,10 +5,6 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php';
 ?>
 
 <!--<h2>--><?php //echo $pagetitle ?><!--</h2>-->
-<h3>Тестовое сообщение</h3>
-
-
-
 
 
 
@@ -36,12 +32,9 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php';
 <br>
 <table class="tftable" border="1">
     <tr>
-        <th >Товары</th>
+        <th colspan="2">Товары</th>
         <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-        <th >
-
-
-
+        <th colspan="2">
             <label><input type="radio" name="image" value="hide" <?= ($check[0]['id'] == 0) ? 'checked' : '' ?>>
                  Только с фото
             </label>
@@ -55,30 +48,43 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php';
             </form>
         </form>
         </th>
+        <th></th>
+
+
     </tr>
     <tr>
-        <td> <a href="/action/view/active.html.php">Активные товары </a></td>
+        <td></td>
+        <td>Всего</td>
+        <td><a href="/action/view/haveimages.html.php">Товары с фото</a></td>
+        <td><a href="/action/view/notimages.html.php">Товары без фото </a></td>
+        <td><a href="/action/view/option.html.php">Товары с несколькими опциями</a></td>
+    </tr>
+    <tr>
+        <td><a href="/action/view/active.html.php">Активные товары </a></td>
         <td><?php echo colorcount2($countallgoods) ?></td>
+        <td><?php echo colorcount2($counthaveimages) ?></td>
+        <td><?php echo colorcount($countnotimages) ?></td>
+        <td><?php echo colorcount($countoptions)  ?></td>
+        <?php // @TODO Проработать $countoptions для активных и не активных товаров ?>
+
     </tr>
     <tr>
         <td><a href="/action/view/notactive.html.php">Неактивные товары </a></td>
+
         <td><?php echo colorcount2($countnotactive) ?></td>
-    </tr>
-    <tr>
-        <td><a href="/action/view/haveimages.html.php">Товары с фото</a></td>
-        <td><?php echo colorcount2($counthaveimages) ?></td>
-    </tr>
-    <tr>
-        <td><a href="/action/view/notimages.html.php">Товары без фото </a></td>
-        <td><?php echo colorcount($countnotimages) ?></td>
-    </tr>
-    <tr>
-        <td><a href="/action/view/option.html.php">Товары с несколькими опциями</a></td>
-        <td><?php echo colorcount($countoptions) ?></td>
+        <td><?php echo colorcount2($countnotactive2) ?></td>
+        <td></td>
+        <td></td>
     </tr>
 </table>
 
+$countnotactive2
+<?php echo colorcount2($countimagenotactive) ?>
 <br>
+
+
+
+
 <table class="tftable" border="1">
     <tr>
         <th colspan="2">Категории</th>
@@ -96,22 +102,6 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php';
         <td><?php echo colorcount($councategorydoubleoption) ?></td>
     </tr>
 </table>
-<br>
-<h2>Управление отображением</h2>
-
-    <table class="tftable" border="1">
-        <tr>
-            <th colspan="2">Товары без фото</th>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
-    <br>
-    <input type="submit" value="Применить"/>
-
-<h3>Удаление вторичных опций у товаров</h3>
 
 </body>
 </html>
