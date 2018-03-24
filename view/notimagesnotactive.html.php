@@ -1,9 +1,9 @@
 <?php
-$pagetitle = "Активные товары без изображений";
+$pagetitle = "Неактивные товары без изображений";
 include_once $_SERVER['DOCUMENT_ROOT'] . '/action/includes/head.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php'; ?>
 <h2><?php echo $pagetitle ?></h2>
-<b>Всего: <?php echo $countnotimages ?></b>
+<b>Всего: <?php echo $countnotimagenotactive ?></b>
 
 <table id="data" class="display" cellspacing="0" width="100%">
     <thead>
@@ -23,7 +23,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php'; ?>
     <?php
     $i = 1;
     ?>
-    <?php foreach ($notimage as $row):;
+    <?php foreach ($notimagenotactive as $row):;
         ?>
         <tr>
             <td>

@@ -13,20 +13,20 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php';
         <th colspan="2">SEO</th>
     </tr>
     <tr>
-        <td><a href="/action/view/category1.html.php">Категории без title</a></td>
-        <td><?php echo colorcount($countcategorytitle) ?></td>
+        <td>Категории без title></td>
+        <td><a href="/action/view/category1.html.php"><?php echo colorcount($countcategorytitle) ?></a></td>
     </tr>
     <tr>
-        <td><a href="/action/view/category2.html.php">Категории без description</a></td>
-        <td><?php echo colorcount($countcategorydescription) ?></td>
+        <td>Категории без description</td>
+        <td><a href="/action/view/category2.html.php"><?php echo colorcount($countcategorydescription) ?></a></td>
     </tr>
     <tr>
-        <td><a href="/action/view/goods1.html.php">Товары без title</a></td>
-        <td> <?php echo colorcount($countgoodstitle) ?></td>
+        <td>Товары без title</td>
+        <td><a href="/action/view/goods1.html.php"><?php echo colorcount($countgoodstitle) ?></a> </td>
     </tr>
     <tr>
-        <td><a href="/action/view/goods2.html.php">Товары без description</a></td>
-        <td> <?php echo colorcount($countgoodsdescription) ?></td>
+        <td>Товары без description</td>
+        <td><a href="/action/view/goods2.html.php"><?php echo colorcount($countgoodsdescription) ?></a></td>
     </tr>
 </table>
 <br>
@@ -55,34 +55,29 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php';
     <tr>
         <td></td>
         <td>Всего</td>
-        <td><a href="/action/view/haveimages.html.php">Товары с фото</a></td>
-        <td><a href="/action/view/notimages.html.php">Товары без фото </a></td>
-        <td><a href="/action/view/option.html.php">Товары с несколькими опциями</a></td>
+        <td>Товары с фото</td>
+        <td>Товары без фото</td>
+        <td>Товары с несколькими опциями</td>
     </tr>
     <tr>
-        <td><a href="/action/view/active.html.php">Активные товары </a></td>
-        <td><?php echo colorcount2($countallgoods) ?></td>
-        <td><?php echo colorcount2($counthaveimages) ?></td>
-        <td><?php echo colorcount($countnotimages) ?></td>
-        <td><?php echo colorcount($countoptions)  ?></td>
-        <?php // @TODO Проработать $countoptions для активных и не активных товаров ?>
-
+        <td>Активные товары</td>
+        <td><a href="/action/view/active.html.php"><?php echo colorcount2($countallgoods) ?></a></td>
+        <td> <a href="/action/view/haveimages.html.php"><?php echo colorcount2($counthaveimages) ?></a> </td>
+        <td> <a href="/action/view/notimages.html.php"><?php echo colorcount($countnotimages) ?></a></td>
+        <td> <a href="/action/view/option.html.php"><?php echo colorcount($countoptions)  ?></a></td>
     </tr>
     <tr>
-        <td><a href="/action/view/notactive.html.php">Неактивные товары </a></td>
-
-        <td><?php echo colorcount2($countnotactive) ?></td>
-        <td><?php echo colorcount2($countnotactive2) ?></td>
-        <td></td>
-        <td></td>
+        <td>Неактивные товары</td>
+        <td><a href="/action/view/notactive.html.php"><?php echo colorcount2($countnotactive) ?></a></td>
+        <td> <a href="/action/view/haveimagesnotactive.html.php"><?php echo colorcount2($countimagenotactive) ?></a> </td>
+        <td> <a href="/action/view/notimagesnotactive.html.php"><?php echo colorcount2($countnotimagenotactive) ?></a></td>
+        <td> <a href="/action/view/optionnotactive.html.php"><?php echo colorcount($countoptionsnotactive)  ?></a></td>
     </tr>
 </table>
 
-$countnotactive2
-<?php echo colorcount2($countimagenotactive) ?>
+
+
 <br>
-
-
 
 
 <table class="tftable" border="1">
@@ -90,16 +85,16 @@ $countnotactive2
         <th colspan="2">Категории</th>
     </tr>
        <tr>
-        <td><a href="/action/view/category.html.php">Категории на сайте</a></td>
-        <td><?php echo colorcount2($countcategory) ?>
+        <td>Категории на сайте</td>
+        <td><a href="/action/view/category.html.php"><?php echo colorcount2($countcategory) ?></a>
             <form action="" method="post" class="countcategory">
                 <input type="submit" name="countcategory" value="Рассчитать" >
             </form>
         </td>
     </tr>
     <tr>
-        <td><a href="/action/view/doublecategoryoption.html.php">Категории с несколькими опциями </a></td>
-        <td><?php echo colorcount($councategorydoubleoption) ?></td>
+        <td>Категории с несколькими опциями</td>
+        <td><a href="/action/view/doublecategoryoption.html.php"><?php echo colorcount($councategorydoubleoption) ?></a></td>
     </tr>
 </table>
 

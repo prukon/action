@@ -410,10 +410,10 @@ $countcategorydescription = count($categorydescription);
 $countgoodstitle = count($goodstitle);
 $countgoodsdescription = count($goodsdescription);
 $countnotimages = count($notimage);
-$countnotactive = count($notactive);
 
-$countnotactive2 = count($notactive2);
+//$countnotactivea = count($notactive);
 
+//$countnotactive = count($notactive);
 
 $counthaveimages = count($haveimage);
 $countimagenotactive = count($imagenotactive);

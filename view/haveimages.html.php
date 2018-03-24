@@ -3,7 +3,7 @@ $pagetitle = "Товары с фото";
 include_once $_SERVER['DOCUMENT_ROOT'] . '/action/includes/head.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php'; ?>
 <h2><?php echo $pagetitle ?></h2>
-<b>Всего: <?php echo $countnotactive ?></b>
+<b>Всего: <?php echo $counthaveimages ?></b>
 
 <table id ="data" class="display" cellspacing="0" width="100%">
     <thead>
