@@ -109,7 +109,7 @@ while ($row2 = $result2->fetch()) {
     $categorydescription[] = $row['name'];
 }
 //товары без тайтла
-$sql = 'SELECT sku as artukul, price, oc_manufacturer.name as brand, oc_product_description.name as h1, oc_product_description.meta_title as title, oc_product_description.description as description, oc_category_description.name AS category
+$sql = 'SELECT oc_product.product_id, sku as artukul, price, oc_manufacturer.name as brand, oc_product_description.name as h1, oc_product_description.meta_title as title, oc_product_description.description as description, oc_category_description.name AS category
 FROM oc_product
 LEFT JOIN oc_manufacturer ON oc_manufacturer.manufacturer_id = oc_product.manufacturer_id
 LEFT JOIN oc_product_description ON oc_product_description.product_id = oc_product.product_id
@@ -119,7 +119,8 @@ WHERE (oc_product_description.meta_title ="" OR oc_product_description.meta_titl
 $result = $pdo->query($sql);
 while ($row = $result->fetch()) {
     $goodstitle[] = [
-        "artukul" => $row['artukul']
+        "product_id" => $row['product_id']
+        , "artukul" => $row['artukul']
         , "price" => $row['price']
         , "brand" => $row['brand']
         , "h1" => $row['h1']

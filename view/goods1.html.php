@@ -37,7 +37,9 @@ echo $i;
                 <?php htmlout($row['brand']); ?>
             </td>
             <td>
-                <?php htmlout($row['h1']); ?>
+                <a href="<?php echo 'https://pinkpet.ru' . '/product_id=' . $row['product_id'] ;
+                ?>" target="_blank"> <?php htmlout($row['h1']); ?></a>
+
             </td>
             <td>
                 <?php htmlout($row['title']); ?>

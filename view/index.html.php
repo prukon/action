@@ -44,19 +44,19 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php';
     <tr>
         <td></td>
         <td>Всего</td>
-        <td>Товары с фото</td>
-        <td>Товары без фото</td>
-        <td>Товары с несколькими опциями</td>
+        <td>C фото</td>
+        <td>Без фото</td>
+        <td>С несколькими опциями</td>
     </tr>
     <tr>
-        <td>Активные товары</td>
+        <td>Активные</td>
         <td><a href="/action/view/active.html.php"><?php echo colorcount2($countallgoods) ?></a></td>
         <td> <a href="/action/view/haveimages.html.php"><?php echo colorcount2($counthaveimages) ?></a> </td>
         <td> <a href="/action/view/notimages.html.php"><?php echo colorcount($countnotimages) ?></a></td>
         <td> <a href="/action/view/option.html.php"><?php echo colorcount($countoptions)  ?></a></td>
     </tr>
     <tr>
-        <td>Неактивные товары</td>
+        <td>Неактивные</td>
         <td><a href="/action/view/notactive.html.php"><?php echo colorcount2($countnotactive) ?></a></td>
         <td> <a href="/action/view/haveimagesnotactive.html.php"><?php echo colorcount2($countimagenotactive) ?></a> </td>
         <td> <a href="/action/view/notimagesnotactive.html.php"><?php echo colorcount2($countnotimagenotactive) ?></a></td>
@@ -78,6 +78,31 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php';
             </form>
         </td>
         <td><a href="/action/view/doublecategoryoption.html.php"><?php echo colorcount($councategorydoubleoption) ?></a></td>
+    </tr>
+</table>
+<br>
+<table class="tftable" border="1">
+    <tr>
+        <th>Производители</th>
+        <th>Всего</th>
+        <th>С фото</th>
+        <th>Без фото</th>
+        <th>Товаров</th>
+
+    </tr>
+    <tr>
+        <td>Активные</td>
+        <td>Неактивные</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
     </tr>
 </table>
 </body>
