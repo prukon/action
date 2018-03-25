@@ -92,13 +92,13 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php';
     </tr>
     <tr>
         <td>Активные</td>
-        <td>Неактивные</td>
+        <td><a href="/action/view//manufacturer.html.php"><?php echo colorcount2($countmanufacture) ?></td>
         <td></td>
         <td></td>
         <td></td>
     </tr>
     <tr>
-        <td></td>
+        <td>Неактивные</td>
         <td></td>
         <td></td>
         <td></td>
@@ -107,3 +107,4 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php';
 </table>
 </body>
 </html>
+

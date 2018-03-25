@@ -429,7 +429,7 @@ while ($row = $result->fetch()) {
 }
 
 
-//Товары с несколькими опциями активные
+//Товары с несколькими опциями неактивные
 $sql = 'SELECT
 product_option_id,
 oc_product_option.product_id,
@@ -481,6 +481,43 @@ while ($row = $result->fetch()) {
 
 
 
+//Производители, с каунтеррами активных и неактивных товаров
+$sql = 'SELECT oc_manufacturer.`manufacturer_id` as oc_manufacturerid, oc_manufacturer.name
+    ,(SELECT
+          COUNT(oc_product.product_id)
+    FROM oc_product
+     WHERE oc_manufacturerid = oc_product.manufacturer_id
+    ) as all_goods
+    ,(SELECT
+          COUNT(oc_product.product_id)
+    FROM oc_product
+     WHERE oc_manufacturerid = oc_product.manufacturer_id
+      and oc_product.status = 1
+    ) as active_goods
+        ,(SELECT
+          COUNT(oc_product.product_id)
+    FROM oc_product
+     WHERE oc_manufacturerid = oc_product.manufacturer_id
+      and oc_product.status = 0
+    ) as notactive_goods
+FROM `oc_manufacturer`
+ -- ORDER by  all_goods DESC
+';
+$result = $pdo->query($sql);
+while ($row = $result->fetch()) {
+    $manufacture[] = [
+        "oc_manufacturerid" => $row['oc_manufacturerid']
+        , "name" => $row['name']
+        , "all_goods" => $row['all_goods']
+        , "active_goods" => $row['active_goods']
+        , "notactive_goods" => $row['notactive_goods']
+    ];
+}
+
+
+
+
+
 //$result = $pdo->query('SELECT `product_id` FROM `oc_product` WHERE oc_product.status= 1');
 //foreach ($result as $row)
 //{
@@ -500,6 +537,9 @@ $councategorydoubleoption = count($categorydoubleoption);
 $countimagenotactive = count($imagenotactive);
 $countnotimagenotactive = count($notimagenotactive);
 $countoptionsnotactive = count($optionsnotactive);
+$countmanufacture = count($manufacture);
+
+
 
 
 
