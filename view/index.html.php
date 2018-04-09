@@ -85,8 +85,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php';
     <tr>
         <th>Производители</th>
         <th>Всего</th>
-        <th>С фото</th>
-        <th>Без фото</th>
+
         <th>Товаров</th>
 
     </tr>
@@ -94,15 +93,13 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php';
         <td>Активные</td>
         <td><a href="/action/view//manufacturer.html.php"><?php echo colorcount2($countmanufacture) ?></td>
         <td></td>
-        <td></td>
-        <td></td>
+
     </tr>
     <tr>
         <td>Неактивные</td>
         <td></td>
         <td></td>
-        <td></td>
-        <td></td>
+
     </tr>
 </table>
 </body>

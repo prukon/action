@@ -518,6 +518,9 @@ while ($row = $result->fetch()) {
 
 
 
+
+
+
 //$result = $pdo->query('SELECT `product_id` FROM `oc_product` WHERE oc_product.status= 1');
 //foreach ($result as $row)
 //{
