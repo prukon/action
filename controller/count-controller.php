@@ -149,10 +149,6 @@ while ($row = $result->fetch()) {
         , "category" => $row['category']
     ];
 }
-
-
-
-
 //Категории с повторяющимися опциями
 $sql = '
 SELECT DISTINCT
@@ -198,50 +194,20 @@ while ($row = $result->fetch()) {
         , "category" => $row['category']
     ];
 }
-//$sql = 'SELECT DISTINCT oc_product_to_category.category_id AS CATEGORY,
-//oc_product_to_category.category_id,
-//oc_category_description.name as name,
-//oc_category_description.meta_title as title,
-//oc_category_description.meta_description as description,
-//oc_product.`status`,
-//  (SELECT COUNT(*) FROM oc_product_to_category
-//   LEFT JOIN oc_product on oc_product.product_id = oc_product_to_category.product_id
-//WHERE oc_product_to_category.`category_id` = CATEGORY and oc_product.`status` = 1) as counter
-//FROM oc_product_to_category
-//LEFT JOIN oc_product on oc_product_to_category.product_id = oc_product.product_id
-//LEFT JOIN oc_category_description ON oc_product_to_category.category_id=oc_category_description.category_id
-//WHERE oc_product.`status` = 1
-//ORDER BY `counter`  DESC';
-//$result = $pdo->query($sql);
-//
-//
-//while ($row = $result->fetch()) {
-//    $category[] = [
-//        "category_id" => $row['CATEGORY']
-//        , "name" => $row['name']
-//        , "title" => $row['title']
-//        , "description" => $row['description']
-//        , "count" => $row['counter']
-//    ];
-//}
-
-
-
-//ПОДСЧЕТ КАТЕГОРИЙ (тяжелый)
+//ПОДСЧЕТ КАТЕГОРИЙ (Облегченный)
 if (isset($_POST['countcategory'])) {
-    $sql = 'SELECT DISTINCT oc_product_to_category.category_id AS CATEGORY,
+    $sql = 'SELECT oc_product_to_category.category_id AS CATEGORY,
 oc_product_to_category.category_id,
 oc_category_description.name as name,
 oc_category_description.meta_title as title,
 oc_category_description.meta_description as description,
 oc_product.`status`,
-  (SELECT COUNT(*) FROM oc_product_to_category
-   LEFT JOIN oc_product on oc_product.product_id = oc_product_to_category.product_id
-WHERE oc_product_to_category.`category_id` = CATEGORY and oc_product.`status` = 1) as counter
+count(oc_product_to_category.category_id) as counter
 FROM oc_product_to_category
 LEFT JOIN oc_product on oc_product_to_category.product_id = oc_product.product_id
 LEFT JOIN oc_category_description ON oc_product_to_category.category_id=oc_category_description.category_id
 WHERE oc_product.`status` = 1
+GROUP BY oc_product_to_category.category_id
 ORDER BY `counter`  DESC';
     $result = $pdo->query($sql);
     header('Location: .');
@@ -255,9 +221,6 @@ while ($row = $result->fetch()) {
         , "count" => $row['counter']
     ];
 }
-
-
-
 //Расчет всех товаров на сайте активных
 $sql = 'SELECT sku as artukul, price, oc_manufacturer.name as brand, oc_product_description.name as h1, oc_product_description.name as title, oc_product_description.description as description, oc_category_description.name AS category
 FROM oc_product
@@ -279,8 +242,6 @@ while ($row = $result->fetch()) {
         , "category" => $row['category']
     ];
 }
-
-
 //Товары c изображениями активные
 $sql = 'SELECT oc_product.product_id as product_id,
 sku as artukul, price, oc_manufacturer.name as brand, oc_product_description.name as h1, oc_product_description.name as title, oc_product_description.description as description, oc_category_description.name AS category
@@ -304,8 +265,6 @@ while ($row = $result->fetch()) {
         , "category" => $row['category']
     ];
 }
-
-
 //Товары без изображений активные
 $sql = 'SELECT sku as artukul,
 price, oc_manufacturer.name as brand,
@@ -331,8 +290,6 @@ while ($row = $result->fetch()) {
         , "category" => $row['category']
     ];
 }
-
-
 //Товары с несколькими опциями активные
 $sql = 'SELECT
 product_option_id,
@@ -381,7 +338,6 @@ while ($row = $result->fetch()) {
         , "product_option_id" => $row['product_option_id']
     ];
 }
-
 //Товары c изображениями неактивные
 $sql = 'SELECT oc_product.product_id as product_id,
 sku as artukul, price, oc_manufacturer.name as brand, oc_product_description.name as h1, oc_product_description.name as title, oc_product_description.description as description, oc_category_description.name AS category
@@ -427,8 +383,6 @@ while ($row = $result->fetch()) {
         , "category" => $row['category']
     ];
 }
-
-
 //Товары с несколькими опциями неактивные
 $sql = 'SELECT
 product_option_id,
@@ -477,10 +431,6 @@ while ($row = $result->fetch()) {
         , "product_option_id" => $row['product_option_id']
     ];
 }
-
-
-
-
 //Производители, с каунтеррами активных и неактивных товаров
 $sql = 'SELECT oc_manufacturer.`manufacturer_id` as oc_manufacturerid, oc_manufacturer.name
     ,(SELECT
@@ -513,19 +463,6 @@ while ($row = $result->fetch()) {
         , "notactive_goods" => $row['notactive_goods']
     ];
 }
-
-
-
-
-
-
-
-
-//$result = $pdo->query('SELECT `product_id` FROM `oc_product` WHERE oc_product.status= 1');
-//foreach ($result as $row)
-//{
-//    $allgoods[] = array('product_id' => $row['product_id']);
-//}
 $countcategorytitle = count($categorytitle);
 $countcategorydescription = count($categorydescription);
 $countgoodstitle = count($goodstitle);
