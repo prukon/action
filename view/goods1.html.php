@@ -21,38 +21,6 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php'; ?>
     </thead>
     <tbody>
 
-    <?php $i=1; foreach ($goodstitle as $row):;
-        ?>
-        <tr>
-            <td>
-<?php
-echo $i;
-?>            </td>
-            <td>
-                <?php htmlout($row['artukul']); ?>
-            <td>
-                <?php htmlout($row['price']); ?>
-            </td>
-            <td>
-                <?php htmlout($row['brand']); ?>
-            </td>
-            <td>
-                <a href="<?php echo 'https://pinkpet.ru' . '/product_id=' . $row['product_id'] ;
-                ?>" target="_blank"> <?php htmlout($row['h1']); ?></a>
-
-            </td>
-            <td>
-                <?php htmlout($row['title']); ?>
-            </td>
-            <td>
-                <?php htmlout($row['description']); ?>
-            </td>
-            <td>
-                <?php htmlout($row['category']); ?>
-            </td>
-
-        </tr>
-    <?php $i++; endforeach; ?>
     </tbody>
 </table>
 <a href="/action">Назад</a>
