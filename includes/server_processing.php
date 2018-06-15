@@ -10,9 +10,7 @@ LEFT JOIN oc_product_description ON oc_product_description.product_id = oc_produ
 LEFT JOIN oc_product_to_category ON oc_product.product_id = oc_product_to_category.product_id
 LEFT JOIN oc_category_description ON oc_category_description.category_id = oc_product_to_category.category_id
 WHERE (oc_product_description.meta_title ="" OR oc_product_description.meta_title IS NULL) and oc_product.status = 1
-
  ) temp
-
 EOT;
 
 $primaryKey = 'product_id';
