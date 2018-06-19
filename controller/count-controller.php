@@ -110,47 +110,7 @@ WHERE (`meta_description` ="" OR `meta_description` IS NULL) and oc_category.sta
 while ($row2 = $result2->fetch()) {
     $categorydescription[] = $row['name'];
 }
-//товары без тайтла (сервер)
-//$sql = 'SELECT oc_product.product_id, sku as artukul, price, oc_manufacturer.name as brand, oc_product_description.name as h1, oc_product_description.meta_title as title, oc_product_description.description as description, oc_category_description.name AS category
-//FROM oc_product
-//LEFT JOIN oc_manufacturer ON oc_manufacturer.manufacturer_id = oc_product.manufacturer_id
-//LEFT JOIN oc_product_description ON oc_product_description.product_id = oc_product.product_id
-//LEFT JOIN oc_product_to_category ON oc_product.product_id = oc_product_to_category.product_id
-//LEFT JOIN oc_category_description ON oc_category_description.category_id = oc_product_to_category.category_id
-//WHERE (oc_product_description.meta_title ="" OR oc_product_description.meta_title IS NULL) and oc_product.status = 1';
-//$result = $pdo->query($sql);
-//while ($row = $result->fetch()) {
-//    $goodstitle[] = [
-//        "product_id" => $row['product_id']
-//        , "artukul" => $row['artukul']
-//        , "price" => $row['price']
-//        , "brand" => $row['brand']
-//        , "h1" => $row['h1']
-//        , "title" => $row['title']
-//        , "description" => $row['description']
-//        , "category" => $row['category']
-//    ];
-//}
-//Товары без дескрипшина (сервер)
-//$sql = 'SELECT sku as artukul, price, oc_manufacturer.name as brand, oc_product_description.name as h1, oc_product_description.meta_title as title, oc_product_description.description as description, oc_category_description.name AS category
-//FROM oc_product
-//LEFT JOIN oc_manufacturer ON oc_manufacturer.manufacturer_id = oc_product.manufacturer_id
-//LEFT JOIN oc_product_description ON oc_product_description.product_id = oc_product.product_id
-//LEFT JOIN oc_product_to_category ON oc_product.product_id = oc_product_to_category.product_id
-//LEFT JOIN oc_category_description ON oc_category_description.category_id = oc_product_to_category.category_id
-//WHERE (oc_product_description.meta_description ="" OR oc_product_description.meta_description =" " OR oc_product_description.meta_description IS NULL) and oc_product.status = 1';
-//$result = $pdo->query($sql);
-//while ($row = $result->fetch()) {
-//    $goodsdescription[] = [
-//        "artukul" => $row['artukul']
-//        , "price" => $row['price']
-//        , "brand" => $row['brand']
-//        , "h1" => $row['h1']
-//        , "title" => $row['title']
-//        , "description" => $row['description']
-//        , "category" => $row['category']
-//    ];
-//}
+
 //Категории с повторяющимися опциями
 $sql = '
 SELECT DISTINCT
@@ -175,27 +135,8 @@ while ($row = $result->fetch()) {
         , "count" => $row['count']
     ];
 }
-//Товары неактивные (сервер)
-//$sql = 'SELECT sku as artukul, price, oc_manufacturer.name as brand, oc_product_description.name as h1, oc_product_description.name as title, oc_product_description.description as description, oc_category_description.name AS category
-//FROM oc_product
-//LEFT JOIN oc_manufacturer ON oc_manufacturer.manufacturer_id = oc_product.manufacturer_id
-//LEFT JOIN oc_product_description ON oc_product_description.product_id = oc_product.product_id
-//LEFT JOIN oc_product_to_category ON oc_product.product_id = oc_product_to_category.product_id
-//LEFT JOIN oc_category_description ON oc_category_description.category_id = oc_product_to_category.category_id
-//WHERE oc_product.status = 0';
-//
-//$result = $pdo->query($sql);
-//while ($row = $result->fetch()) {
-//    $notactive[] = [
-//        "artukul" => $row['artukul']
-//        , "price" => $row['price']
-//        , "brand" => $row['brand']
-//        , "h1" => $row['h1']
-//        , "title" => $row['title']
-//        , "description" => $row['description']
-//        , "category" => $row['category']
-//    ];
-//}
+
+
 //ПОДСЧЕТ КАТЕГОРИЙ (Облегченный)
 if (isset($_POST['countcategory'])) {
     $sql = 'SELECT oc_product_to_category.category_id AS CATEGORY,
@@ -223,158 +164,79 @@ while ($row = $result->fetch()) {
         , "count" => $row['counter']
     ];
 }
+
+//товары без тайтла (сервер)
+$result = $pdo->query("SELECT count(*)
+FROM oc_product
+LEFT JOIN oc_product_description ON oc_product_description.product_id = oc_product.product_id
+WHERE (oc_product_description.meta_title ='' OR oc_product_description.meta_title IS NULL)
+and oc_product.status = 1");
+$data = $result->fetch();
+$countgoodstitle =  $data['0'];
+
+//Товары без дескрипшина (сервер)
+$result = $pdo->query("SELECT COUNT(*)
+FROM oc_product
+LEFT JOIN oc_product_description ON oc_product_description.product_id = oc_product.product_id
+WHERE (oc_product_description.meta_description ='' OR oc_product_description.meta_description =' '  OR oc_product_description.meta_description IS NULL) and oc_product.status = 1");
+$data = $result->fetch();
+$countgoodsdescription =  $data['0'];
+
+//Товары неактивные (сервер)
+$result = $pdo->query("SELECT COUNT(*)
+FROM oc_product
+WHERE oc_product.status = 0");
+$data = $result->fetch();
+$countnotactive =  $data['0'];
+
 //Расчет всех товаров на сайте активных (сервер)
-//$sql = 'SELECT sku as artukul, price, oc_manufacturer.name as brand, oc_product_description.name as h1, oc_product_description.name as title, oc_product_description.description as description, oc_category_description.name AS category
-//FROM oc_product
-//LEFT JOIN oc_manufacturer ON oc_manufacturer.manufacturer_id = oc_product.manufacturer_id
-//LEFT JOIN oc_product_description ON oc_product_description.product_id = oc_product.product_id
-//LEFT JOIN oc_product_to_category ON oc_product.product_id = oc_product_to_category.product_id
-//LEFT JOIN oc_category_description ON oc_category_description.category_id = oc_product_to_category.category_id
-//WHERE oc_product.status = 1';
-//
-//$result = $pdo->query($sql);
-//while ($row = $result->fetch()) {
-//    $allgoods[] = [
-//        "artukul" => $row['artukul']
-//        , "price" => $row['price']
-//        , "brand" => $row['brand']
-//        , "h1" => $row['h1']
-//        , "title" => $row['title']
-//        , "description" => $row['description']
-//        , "category" => $row['category']
-//    ];
-//}
-
-
-//включаем флаг активности радиокнопки в БД
-$sql = "SELECT `id` FROM `control`";
-$result = $pdo->query($sql);
-while ($row = $result->fetch()) {
-    $check[] = $row['id'];
-}
-
-
-
-
+$result = $pdo->query("SELECT
+    COUNT(*)
+FROM oc_product
+WHERE oc_product.status = 1");
+$data = $result->fetch();
+$countallgoods =  $data['0'];
 
 //Товары c изображениями активные (сервер)
-//$sql = 'SELECT oc_product.product_id as product_id,
-//sku as artukul, price, oc_manufacturer.name as brand, oc_product_description.name as h1, oc_product_description.name as title, oc_product_description.description as description, oc_category_description.name AS category
-//FROM oc_product
-//LEFT JOIN oc_manufacturer ON oc_manufacturer.manufacturer_id = oc_product.manufacturer_id
-//LEFT JOIN oc_product_description ON oc_product_description.product_id = oc_product.product_id
-//LEFT JOIN oc_product_to_category ON oc_product.product_id = oc_product_to_category.product_id
-//LEFT JOIN oc_category_description ON oc_category_description.category_id = oc_product_to_category.category_id
-//WHERE oc_product.image is not null and oc_product.status= 1';
-////WHERE oc_product.image is null AND oc_product.sku LIKE "%o%"';
-//$result = $pdo->query($sql);
-//while ($row = $result->fetch()) {
-//    $haveimage[] = [
-//        "artukul" => $row['artukul']
-//        , "product_id" => $row['product_id']
-//        , "price" => $row['price']
-//        , "brand" => $row['brand']
-//        , "h1" => $row['h1']
-//        , "title" => $row['title']
-//        , "description" => $row['description']
-//        , "category" => $row['category']
-//    ];
-//}
+$result = $pdo->query("SELECT  COUNT(*)
+FROM oc_product
+WHERE oc_product.image is not null and oc_product.status= 1");
+$data = $result->fetch();
+$counthaveimages =  $data['0'];
+
 //Товары без изображений активные (сервер)
-//$sql = 'SELECT sku as artukul,
-//price, oc_manufacturer.name as brand,
-//oc_product_description.name as h1,
-//oc_product_description.name as title,
-//oc_product_description.description as description,
-//oc_category_description.name AS category
-//FROM oc_product
-//LEFT JOIN oc_manufacturer ON oc_manufacturer.manufacturer_id = oc_product.manufacturer_id
-//LEFT JOIN oc_product_description ON oc_product_description.product_id = oc_product.product_id
-//LEFT JOIN oc_product_to_category ON oc_product.product_id = oc_product_to_category.product_id
-//LEFT JOIN oc_category_description ON oc_category_description.category_id = oc_product_to_category.category_id
-//WHERE oc_product.image is null and oc_product.status= 1';
-//$result = $pdo->query($sql);
-//while ($row = $result->fetch()) {
-//    $notimage[] = [
-//        "artukul" => $row['artukul']
-//        , "price" => $row['price']
-//        , "brand" => $row['brand']
-//        , "h1" => $row['h1']
-//        , "title" => $row['title']
-//        , "description" => $row['description']
-//        , "category" => $row['category']
-//    ];
-//}
-//Товары с несколькими опциями активные
-$sql = 'SELECT
-product_option_id,
-oc_product_option.product_id,
-oc_product_option.option_id,
-oc_product_option.value,
-oc_product.model AS model,
-oc_product_description.name AS h1,
-oc_product_description.meta_title AS title,
-oc_product_description.description as description,
-oc_manufacturer.name as brand,
-oc_category_description.name AS category,
-oc_attribute_description.name AS attribute_name
-FROM oc_product_option
-LEFT JOIN oc_product ON oc_product.product_id = oc_product_option.product_id
-LEFT JOIN oc_product_description ON oc_product_description.product_id = oc_product_option.product_id
-LEFT JOIN oc_manufacturer ON oc_manufacturer.manufacturer_id = oc_product.manufacturer_id
-LEFT JOIN oc_product_to_category ON oc_product.product_id = oc_product_to_category.product_id
-LEFT JOIN oc_category_description ON oc_category_description.category_id = oc_product_to_category.category_id
-LEFT JOIN oc_attribute_description ON oc_attribute_description.attribute_id = oc_product_option.option_id
-LEFT JOIN oc_option_value_description ON oc_option_value_description.option_value_id = oc_product_option.option_id
-WHERE oc_product_option.product_id IN (
-    SELECT oc_product_option.product_id
-  FROM oc_product_option
-   LEFT  JOIN oc_product on oc_product.product_id = oc_product_option.product_id
-   WHERE oc_product.status= 1
-  GROUP BY oc_product_option.product_id
-  HAVING count(oc_product_option.product_id) > 1
-)
- and oc_product.status= 1
-  GROUP BY oc_product_option.product_id
-';
-$result = $pdo->query($sql);
-while ($row = $result->fetch()) {
-    $options[] = [
-        "product_id" => $row['product_id']
-        , "model" => $row['model']
-        , "brand" => $row['brand']
-        , "h1" => $row['h1']
-        , "title" => $row['title']
-        , "description" => $row['description']
-        , "category" => $row['category']
-        , "option_id" => $row['option_id']
-        , "attribute_name" => $row['attribute_name']
-        , "value" => $row['value']
-        , "product_option_id" => $row['product_option_id']
-    ];
-}
+$result = $pdo->query("SELECT count(*)
+FROM oc_product
+WHERE oc_product.image is null and oc_product.status= 1");
+$data = $result->fetch();
+$countnotimages =  $data['0'];
+
 //Товары c изображениями неактивные (сервер)
-//$sql = 'SELECT oc_product.product_id as product_id,
-//sku as artukul, price, oc_manufacturer.name as brand, oc_product_description.name as h1, oc_product_description.name as title, oc_product_description.description as description, oc_category_description.name AS category
-//FROM oc_product
-//LEFT JOIN oc_manufacturer ON oc_manufacturer.manufacturer_id = oc_product.manufacturer_id
-//LEFT JOIN oc_product_description ON oc_product_description.product_id = oc_product.product_id
-//LEFT JOIN oc_product_to_category ON oc_product.product_id = oc_product_to_category.product_id
-//LEFT JOIN oc_category_description ON oc_category_description.category_id = oc_product_to_category.category_id
-//WHERE oc_product.image is not null and oc_product.status= 0';
-//$result = $pdo->query($sql);
-//while ($row = $result->fetch()) {
-//    $imagenotactive[] = [
-//        "artukul" => $row['artukul']
-//        , "product_id" => $row['product_id']
-//        , "price" => $row['price']
-//        , "brand" => $row['brand']
-//        , "h1" => $row['h1']
-//        , "title" => $row['title']
-//        , "description" => $row['description']
-//        , "category" => $row['category']
-//    ];
-//}
+$result = $pdo->query("SELECT count(*)
+FROM oc_product
+WHERE oc_product.image is not null and oc_product.status= 0");
+$data = $result->fetch();
+$countimagenotactive =  $data['0'];
+
+//Товары с несколькими опциями активные (сервер) (выдает 2 вместо на 1)
+$result = $pdo->query("SELECT
+COUNT(*)
+FROM oc_product_option
+    LEFT JOIN oc_product ON oc_product.product_id = oc_product_option.product_id
+	WHERE 	oc_product_option.product_id IN (
+        	SELECT oc_product_option.product_id
+        	FROM oc_product_option
+        	LEFT  JOIN oc_product on oc_product.product_id = oc_product_option.product_id
+        	WHERE oc_product.status= 1
+        	GROUP BY oc_product_option.product_id
+        	HAVING count(oc_product_option.product_id) > 1
+        	)
+    	and oc_product.status= 1
+    GROUP BY oc_product_option.product_id");
+$data = $result->fetch();
+$countoptions =  $data['0'];
+
+
 
 //Товары без изображениями неактивные
 $sql = 'SELECT oc_product.product_id as product_id,
@@ -478,16 +340,8 @@ while ($row = $result->fetch()) {
         , "notactive_goods" => $row['notactive_goods']
     ];
 }
-//$countallgoods = count($allgoods);
-//$countgoodstitle = count($goodstitle);
-//$countgoodsdescription = count($goodsdescription);
-//$countnotimages = count($notimage);
-//$countnotactive = count($notactive);
-//$counthaveimages = count($haveimage);
-//$countimagenotactive = count($imagenotactive);
 $countcategorytitle = count($categorytitle);
 $countcategorydescription = count($categorydescription);
-$countoptions = count($options);
 $countcategory = count($category);
 $councategorydoubleoption = count($categorydoubleoption);
 $countnotimagenotactive = count($notimagenotactive);
