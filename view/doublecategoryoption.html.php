@@ -3,16 +3,12 @@ $pagetitle = "Категории с повторяющими опциями";
 include_once $_SERVER['DOCUMENT_ROOT'] . '/action/includes/head.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php'; ?>
 <h2><?php echo $pagetitle ?></h2>
-<!--<b>Всего: --><?php //echo $countnotactive ?><!--</b>-->
-
-<h3>Обозначания опций</h3>
+<b>Всего: <?php echo $countallgoods ?></b>
 
 
-
-<table id="data" class="display" cellspacing="0" width="100%">
+<table id="doublecategoryoption" class="display" cellspacing="0" width="100%">
     <thead>
     <tr>
-        <th>№</th>
         <th>id</th>
         <th>Название</th>
         <th>Удаление опций</th>

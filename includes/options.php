@@ -52,14 +52,13 @@ foreach ($data["data"] as &$row) {
     $row[4] = "<a href='https://pinkpet.ru/product_id=" . $row[0] . '\' target="_blank"> ' . $row[4] . "</a>";
 };
 
-foreach ($data["data"] as &$row) {
-    $row[8] = "<form action='' method='post'>
-<input type='submit' value='Удалить'>
-</form>";
+foreach ($data["data"] as $row) {
+$row[8] = "<form action='' method='post'>
+    <input type='hidden' name='product_option_id' value='".$row['product_option_id']."'>
+    <input type='submit' value='Удалить'></form>";
 };
 
 echo json_encode($data);
-
 
 
 //старый вывод

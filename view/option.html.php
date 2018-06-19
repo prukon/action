@@ -60,7 +60,9 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php'; ?>
 <!--            <td>-->
                 <form action="" method="post">
                     <input type="hidden" name="product_option_id" value="<?php echo $row['product_option_id']; ?>">
-                <input type="submit" value="Удалить">
+
+
+                    <input type="submit" value="Удалить">
                 </form>
 <!--            </td>-->
 <!--        </tr>-->

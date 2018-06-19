@@ -1,20 +1,23 @@
 <?php
-$pagetitle = "Категории без descripton";
+$pagetitle = "Активные товары";
 include_once $_SERVER['DOCUMENT_ROOT'] . '/action/includes/head.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php'; ?>
 <h2><?php echo $pagetitle ?></h2>
-<b>Всего: <?php echo $countcategorydescription ?></b>
+<b>Всего: <?php echo $countallgoods ?></b>
 
+<table id="category2" class="display" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>title</th>
+        <th>description</th>
+        <th>Изображение</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
 
-
-
-<?php foreach ($categorydescription as $row): ?>
-    <blockquote>
-        <p>
-            <?php echo htmlspecialchars($row, ENT_QUOTES, 'UTF-8'); ?>
-        </p>
-    </blockquote>
-<?php endforeach; ?> <br>
 <a href="/action">Назад</a>
 </body>
 </html>

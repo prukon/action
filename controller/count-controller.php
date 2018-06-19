@@ -86,55 +86,56 @@ $result = $pdo->query($sql);
 while ($row = $result->fetch()) {
     $check[] = $row['id'];
 }
-//Категории без тайтла
-$sql = 'SELECT name
-FROM oc_category_description
-LEFT JOIN oc_category on oc_category_description.category_id = oc_category.category_id
-WHERE (`meta_title` ="" OR `meta_title` IS NULL) and oc_category.status = "1"';
-$result2 = $pdo->query($sql);
-while ($row2 = $result2->fetch()) {
-    $categorytitle[] = $row2['name'];
-}
-//Категории без дескрипшина
-try {
-    $sql = 'SELECT name
-FROM oc_category_description
-LEFT JOIN oc_category on oc_category_description.category_id = oc_category.category_id
-WHERE (`meta_description` ="" OR `meta_description` IS NULL) and oc_category.status = "1"';
-    $result2 = $pdo->query($sql);
-} catch (PDOException $e) {
-    $error = 'Ошибка при извлечении данных: ' . $e->getMessage();
-    include 'error.html.php';
-    exit();
-}
-while ($row2 = $result2->fetch()) {
-    $categorydescription[] = $row['name'];
-}
+//Категории без тайтла (сервер)
+//$sql = 'SELECT name
+//FROM oc_category_description
+//LEFT JOIN oc_category on oc_category_description.category_id = oc_category.category_id
+//WHERE (`meta_title` ="" OR `meta_title` IS NULL) and oc_category.status = "1"';
+//$result2 = $pdo->query($sql);
+//while ($row2 = $result2->fetch()) {
+//    $categorytitle[] = $row2['name'];
+//}
 
-//Категории с повторяющимися опциями
-$sql = '
-SELECT DISTINCT
-oc_product_to_category.category_id,
-oc_category_description.meta_title AS title
-FROM oc_product_option
-LEFT JOIN oc_product_to_category on oc_product_to_category.product_id = oc_product_option.product_id
-LEFT JOIN oc_product on oc_product.product_id = oc_product_to_category.product_id
-LEFT JOIN oc_category_description on oc_category_description.category_id =oc_product_to_category.category_id
-WHERE oc_product_option.product_id IN (
-  SELECT oc_product_option.product_id
-  FROM oc_product_option
-  LEFT  JOIN oc_product on oc_product.product_id = oc_product_option.product_id
-   WHERE oc_product.status= 1
-  GROUP BY oc_product_option.product_id
-  HAVING count(oc_product_option.product_id) > 1)';
-$result = $pdo->query($sql);
-while ($row = $result->fetch()) {
-    $categorydoubleoption[] = [
-        "category_id" => $row['category_id']
-        , "title" => $row['title']
-        , "count" => $row['count']
-    ];
-}
+//Категории без дескрипшина (сервер)
+//try {
+//    $sql = 'SELECT name
+//FROM oc_category_description
+//LEFT JOIN oc_category on oc_category_description.category_id = oc_category.category_id
+//WHERE (`meta_description` ="" OR `meta_description` IS NULL) and oc_category.status = "1"';
+//    $result2 = $pdo->query($sql);
+//} catch (PDOException $e) {
+//    $error = 'Ошибка при извлечении данных: ' . $e->getMessage();
+//    include 'error.html.php';
+//    exit();
+//}
+//while ($row2 = $result2->fetch()) {
+//    $categorydescription[] = $row['name'];
+//}
+
+//Категории с повторяющимися опциями (сервер)
+//$sql = '
+//SELECT DISTINCT
+//oc_product_to_category.category_id,
+//oc_category_description.meta_title AS title
+//FROM oc_product_option
+//LEFT JOIN oc_product_to_category on oc_product_to_category.product_id = oc_product_option.product_id
+//LEFT JOIN oc_product on oc_product.product_id = oc_product_to_category.product_id
+//LEFT JOIN oc_category_description on oc_category_description.category_id =oc_product_to_category.category_id
+//WHERE oc_product_option.product_id IN (
+//  SELECT oc_product_option.product_id
+//  FROM oc_product_option
+//  LEFT  JOIN oc_product on oc_product.product_id = oc_product_option.product_id
+//   WHERE oc_product.status= 1
+//  GROUP BY oc_product_option.product_id
+//  HAVING count(oc_product_option.product_id) > 1)';
+//$result = $pdo->query($sql);
+//while ($row = $result->fetch()) {
+//    $categorydoubleoption[] = [
+//        "category_id" => $row['category_id']
+//        , "title" => $row['title']
+//        , "count" => $row['count']
+//    ];
+//}
 
 
 //ПОДСЧЕТ КАТЕГОРИЙ (Облегченный)
@@ -347,14 +348,3 @@ $councategorydoubleoption = count($categorydoubleoption);
 $countnotimagenotactive = count($notimagenotactive);
 $countoptionsnotactive = count($optionsnotactive);
 $countmanufacture = count($manufacture);
-
-
-
-
-
-
-
-
-
-
-
