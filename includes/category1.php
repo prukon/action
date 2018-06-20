@@ -24,4 +24,3 @@ $data = SSP::simple($_GET, $sql_details, $table, $primaryKey, $columns);
 //    $row[4] = "<a href='https://pinkpet.ru/product_id=" . $row[0] . '\' target="_blank"> ' . $row[4] . "</a>";
 //};
 echo json_encode($data);
-
