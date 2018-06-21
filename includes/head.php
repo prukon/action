@@ -14,7 +14,7 @@
                 "pageLength": 10,
                 "processing": true,
                 "serverSide": true,
-                "ajax": "../includes/goods1.php",
+                "ajax": "../controller/server-table/goods1.php",
                 "language": {
                     "processing": "Подождите...",
                     "search": "Поиск:",
@@ -45,7 +45,7 @@
                 "pageLength": 10,
                 "processing": true,
                 "serverSide": true,
-                "ajax": "../includes/notactive.php",
+                "ajax": "../controller/server-table/notactive.php",
                 "language": {
                     "processing": "Подождите...",
                     "search": "Поиск:",
@@ -76,7 +76,7 @@
                 "pageLength": 10,
                 "processing": true,
                 "serverSide": true,
-                "ajax": "../includes/good2.php",
+                "ajax": "../controller/server-table/good2.php",
                 "language": {
                     "processing": "Подождите...",
                     "search": "Поиск:",
@@ -107,7 +107,7 @@
                 "pageLength": 10,
                 "processing": true,
                 "serverSide": true,
-                "ajax": "../includes/active.php",
+                "ajax": "../controller/server-table/active.php",
                 "language": {
                     "processing": "Подождите...",
                     "search": "Поиск:",
@@ -138,7 +138,7 @@
                 "pageLength": 10,
                 "processing": true,
                 "serverSide": true,
-                "ajax": "../includes/haveimages.php",
+                "ajax": "../controller/server-table/haveimages.php",
                 "language": {
                     "processing": "Подождите...",
                     "search": "Поиск:",
@@ -169,7 +169,7 @@
                 "pageLength": 10,
                 "processing": true,
                 "serverSide": true,
-                "ajax": "../includes/notimages.php",
+                "ajax": "../controller/server-table/notimages.php",
                 "language": {
                     "processing": "Подождите...",
                     "search": "Поиск:",
@@ -195,13 +195,12 @@
             });
         });
     </script>
-
     <script> $(document).ready(function () {
             $('#haveimagesnotactive').DataTable({
                 "pageLength": 10,
                 "processing": true,
                 "serverSide": true,
-                "ajax": "../includes/haveimagesnotactive.php",
+                "ajax": "../controller/server-table/haveimagesnotactive.php",
                 "language": {
                     "processing": "Подождите...",
                     "search": "Поиск:",
@@ -227,13 +226,12 @@
             });
         });
     </script>
-
     <script> $(document).ready(function () {
             $('#options').DataTable({
                 "pageLength": 10,
                 "processing": true,
                 "serverSide": true,
-                "ajax": "../includes/options.php",
+                "ajax": "../controller/server-table/options.php",
                 "language": {
                     "processing": "Подождите...",
                     "search": "Поиск:",
@@ -259,13 +257,12 @@
             });
         });
     </script>
-
     <script> $(document).ready(function () {
             $('#category1').DataTable({
                 "pageLength": 10,
                 "processing": true,
                 "serverSide": true,
-                "ajax": "../includes/category1.php",
+                "ajax": "../controller/server-table/category1.php",
                 "language": {
                     "processing": "Подождите...",
                     "search": "Поиск:",
@@ -291,13 +288,12 @@
             });
         });
     </script>
-
     <script> $(document).ready(function () {
             $('#category2').DataTable({
                 "pageLength": 10,
                 "processing": true,
                 "serverSide": true,
-                "ajax": "../includes/category2.php",
+                "ajax": "../controller/server-table/category2.php",
                 "language": {
                     "processing": "Подождите...",
                     "search": "Поиск:",
@@ -323,13 +319,12 @@
             });
         });
     </script>
-
     <script> $(document).ready(function () {
             $('#doublecategoryoption').DataTable({
                 "pageLength": 10,
                 "processing": true,
                 "serverSide": true,
-                "ajax": "../includes/doublecategoryoption.php",
+                "ajax": "../controller/server-table/doublecategoryoption.php",
                 "language": {
                     "processing": "Подождите...",
                     "search": "Поиск:",
@@ -355,13 +350,12 @@
             });
         });
     </script>
-
     <script> $(document).ready(function () {
             $('#category').DataTable({
                 "pageLength": 10,
                 "processing": true,
                 "serverSide": true,
-                "ajax": "../includes/category.php",
+                "ajax": "../controller/server-table/category.php",
                 "language": {
                     "processing": "Подождите...",
                     "search": "Поиск:",
@@ -387,13 +381,12 @@
             });
         });
     </script>
-
     <script> $(document).ready(function () {
             $('#notimagenotactive').DataTable({
                 "pageLength": 10,
                 "processing": true,
                 "serverSide": true,
-                "ajax": "../includes/notimagenotactive.php",
+                "ajax": "../controller/server-table/notimagenotactive.php",
                 "language": {
                     "processing": "Подождите...",
                     "search": "Поиск:",
@@ -419,13 +412,12 @@
             });
         });
     </script>
-
     <script> $(document).ready(function () {
             $('#optionsnotactive').DataTable({
                 "pageLength": 10,
                 "processing": true,
                 "serverSide": true,
-                "ajax": "../includes/optionsnotactive.php",
+                "ajax": "../controller/server-table/optionsnotactive.php",
                 "language": {
                     "processing": "Подождите...",
                     "search": "Поиск:",
@@ -451,15 +443,12 @@
             });
         });
     </script>
-
-
-
     <script> $(document).ready(function () {
             $('#manufacture').DataTable({
                 "pageLength": 10,
                 "processing": true,
                 "serverSide": true,
-                "ajax": "../includes/manufacture.php",
+                "ajax": "../controller/server-table/manufacture.php",
                 "language": {
                     "processing": "Подождите...",
                     "search": "Поиск:",
@@ -485,12 +474,10 @@
             });
         });
     </script>
-
-
-
-
     <?php
     include_once $_SERVER['DOCUMENT_ROOT'] . '/action/controller/count-controller.php';
+    include_once $_SERVER['DOCUMENT_ROOT'] . '/action/controller/action-controller.php';
+
     ?>
 </head>
 
