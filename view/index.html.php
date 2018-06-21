@@ -91,7 +91,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php';
     </tr>
     <tr>
         <td>Активные</td>
-        <td><a href="/action/view//manufacturer.html.php"><?php echo colorcount2($countmanufacture) ?></td>
+        <td><a href="/action/view/manufacturer.html.php"><?php echo colorcount2($countmanufacture) ?></td>
         <td></td>
 
     </tr>
