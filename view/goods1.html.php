@@ -9,7 +9,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/action/view/header.html.php'; ?>
 <table id="good1" class="display" cellspacing="0" width="100%">
     <thead>
     <tr>
-        <!--<th>№</th>-->
+        <th>id</th>
         <th>Артикул</th>
         <th>Цена</th>
         <th>Производитель</th>

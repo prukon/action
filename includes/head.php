@@ -11,7 +11,7 @@
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
     <script> $(document).ready(function () {
             $('#good1').DataTable({
-                "pageLength": 10,
+                "pageLength": 50,
                 "processing": true,
                 "serverSide": true,
                 "ajax": "../controller/server-table/goods1.php",
@@ -42,7 +42,7 @@
     </script>
     <script> $(document).ready(function () {
             $('#notactive').DataTable({
-                "pageLength": 10,
+                "pageLength": 50,
                 "processing": true,
                 "serverSide": true,
                 "ajax": "../controller/server-table/notactive.php",
@@ -73,7 +73,7 @@
     </script>
     <script> $(document).ready(function () {
             $('#good2').DataTable({
-                "pageLength": 10,
+                "pageLength": 50,
                 "processing": true,
                 "serverSide": true,
                 "ajax": "../controller/server-table/good2.php",
@@ -104,7 +104,7 @@
     </script>
     <script> $(document).ready(function () {
             $('#active').DataTable({
-                "pageLength": 10,
+                "pageLength": 50,
                 "processing": true,
                 "serverSide": true,
                 "ajax": "../controller/server-table/active.php",
@@ -135,7 +135,7 @@
     </script>
     <script> $(document).ready(function () {
             $('#haveimages').DataTable({
-                "pageLength": 10,
+                "pageLength": 50,
                 "processing": true,
                 "serverSide": true,
                 "ajax": "../controller/server-table/haveimages.php",
@@ -166,7 +166,7 @@
     </script>
     <script> $(document).ready(function () {
             $('#notimages').DataTable({
-                "pageLength": 10,
+                "pageLength": 50,
                 "processing": true,
                 "serverSide": true,
                 "ajax": "../controller/server-table/notimages.php",
@@ -197,7 +197,7 @@
     </script>
     <script> $(document).ready(function () {
             $('#haveimagesnotactive').DataTable({
-                "pageLength": 10,
+                "pageLength": 50,
                 "processing": true,
                 "serverSide": true,
                 "ajax": "../controller/server-table/haveimagesnotactive.php",
@@ -228,7 +228,7 @@
     </script>
     <script> $(document).ready(function () {
             $('#options').DataTable({
-                "pageLength": 10,
+                "pageLength": 50,
                 "processing": true,
                 "serverSide": true,
                 "ajax": "../controller/server-table/options.php",
@@ -259,7 +259,7 @@
     </script>
     <script> $(document).ready(function () {
             $('#category1').DataTable({
-                "pageLength": 10,
+                "pageLength": 50,
                 "processing": true,
                 "serverSide": true,
                 "ajax": "../controller/server-table/category1.php",
@@ -290,7 +290,7 @@
     </script>
     <script> $(document).ready(function () {
             $('#category2').DataTable({
-                "pageLength": 10,
+                "pageLength": 50,
                 "processing": true,
                 "serverSide": true,
                 "ajax": "../controller/server-table/category2.php",
@@ -321,7 +321,7 @@
     </script>
     <script> $(document).ready(function () {
             $('#doublecategoryoption').DataTable({
-                "pageLength": 10,
+                "pageLength": 50,
                 "processing": true,
                 "serverSide": true,
                 "ajax": "../controller/server-table/doublecategoryoption.php",
@@ -352,7 +352,7 @@
     </script>
     <script> $(document).ready(function () {
             $('#category').DataTable({
-                "pageLength": 10,
+                "pageLength": 50,
                 "processing": true,
                 "serverSide": true,
                 "ajax": "../controller/server-table/category.php",
@@ -383,7 +383,7 @@
     </script>
     <script> $(document).ready(function () {
             $('#notimagenotactive').DataTable({
-                "pageLength": 10,
+                "pageLength": 50,
                 "processing": true,
                 "serverSide": true,
                 "ajax": "../controller/server-table/notimagenotactive.php",
@@ -414,7 +414,7 @@
     </script>
     <script> $(document).ready(function () {
             $('#optionsnotactive').DataTable({
-                "pageLength": 10,
+                "pageLength": 50,
                 "processing": true,
                 "serverSide": true,
                 "ajax": "../controller/server-table/optionsnotactive.php",
@@ -445,7 +445,7 @@
     </script>
     <script> $(document).ready(function () {
             $('#manufacture').DataTable({
-                "pageLength": 10,
+                "pageLength": 50,
                 "processing": true,
                 "serverSide": true,
                 "ajax": "../controller/server-table/manufacture.php",
